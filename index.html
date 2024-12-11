@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amigo Oculto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        input {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: calc(100% - 22px);
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Amigo Oculto</h1>
+        <input type="text" id="nome" placeholder="Digite seu nome">
+  if (nome === "Vermelho") {
+    sorteio.push({ amigo: nome, sorteado: "Priscilla" });
+    usuarios[nome] = true;
+    return res.status(200).send({ amigo: nome, sorteado: "Priscilla" });
+  }
+
+  if (nome === "Azul") {
+    sorteio.push({ amigo: nome, sorteado: "Márlon" });
+    usuarios[nome] = true;
+    return res.status(200).send({ amigo: nome, sorteado: "Márlon" });
+  }
+
+  // Realiza o sorteio para o participante
+  let temp = participantes.filter((p) => p !== nome && !sorteio.some((s) => s.sorteado === p)); // Exclui o próprio nome e já sorteados
+  if (temp.length === 0) {
+    return res.status(400).send({ message: 'Não há mais nomes disponíveis para sortear!' });
+  }
+
+  let sorteado = temp[Math.floor(Math.random() * temp.length)];
+
+  sorteio.push({ amigo: nome, sorteado });
+  usuarios[nome] = true; // Marca como já sorteou
+  res.status(200).send({ amigo: nome, sorteado });
+});
+
+// Rota para listar resultados (opcional para debug)
+app.get('/resultados', (req, res) => {
+  res.status(200).send(sorteio);
+});
+
+// Inicia o servidor
+app.listen(3000, () => {
+  console.log('Servidor rodando em http://localhost:3000');
+});
+
+// Frontend atualizado com link do backend const baseURL = '<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amigo Oculto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        input {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: calc(100% - 22px);
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Amigo Oculto</h1>
+        <input type="text" id="nome" placeholder="Digite seu nome">
+  if (nome === "Vermelho") {
+    sorteio.push({ amigo: nome, sorteado: "Priscilla" });
+    usuarios[nome] = true;
+    return res.status(200).send({ amigo: nome, sorteado: "Priscilla" });
+  }
+
+  if (nome === "Azul") {
+    sorteio.push({ amigo: nome, sorteado: "Márlon" });
+    usuarios[nome] = true;
+    return res.status(200).send({ amigo: nome, sorteado: "Márlon" });
+  }
+
+  // Realiza o sorteio para o participante
+  let temp = participantes.filter((p) => p !== nome && !sorteio.some((s) => s.sorteado === p)); // Exclui o próprio nome e já sorteados
+  if (temp.length === 0) {
+    return res.status(400).send({ message: 'Não há mais nomes disponíveis para sortear!' });
+  }
+
+  let sorteado = temp[Math.floor(Math.random() * temp.length)];
+
+  sorteio.push({ amigo: nome, sorteado });
+  usuarios[nome] = true; // Marca como já sorteou
+  res.status(200).send({ amigo: nome, sorteado });
+});
+
+// Rota para listar resultados (opcional para debug)
+app.get('/resultados', (req, res) => {
+  res.status(200).send(sorteio);
+});
+
+// Inicia o servidor
+app.listen(3000, () => {
+  console.log('Servidor rodando em http://localhost:3000');
+});
+
+// Frontend atualizado com link do backend const baseURL = 'https://seu-backend-url.com';
+';
